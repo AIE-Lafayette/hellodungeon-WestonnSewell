@@ -12,6 +12,7 @@ namespace HelloDungeon
         {
             // Initializes player stats
             string playerName = "Jim";
+            string playerChoice;
             float testFloat = 3.2f;
             float hp = 10f;
             float atk = 10f;
@@ -22,7 +23,9 @@ namespace HelloDungeon
             Console.WriteLine("Weston");
             Console.WriteLine("Sewell");
             // get input from palyer for first and last name
+            Console.Write(">");
             string firstName = Console.ReadLine();
+            Console.Write(">");
             string lastName = Console.ReadLine();
 
             playerName = firstName + lastName;
@@ -36,20 +39,77 @@ namespace HelloDungeon
             Console.WriteLine("1. Yes");
             Console.WriteLine("2. No");
             // choices and answers 1
-            string playerChoice = Console.ReadLine();
+            Console.Write(">");
+            playerChoice = Console.ReadLine();
 
-            if (playerChoice == "1");
+            if (playerChoice == "1" || playerChoice == "yes")
             {
                 Console.WriteLine("Tastes like an apple.");
                 Console.WriteLine("Your skin hardens and you gain 5 HP.");
                 hp += 5;
             }
 
-            if (playerChoice == "2");
+            else if (playerChoice == "2" || playerChoice  == "no")
             {
                 Console.WriteLine("You decline the offer.");
                 Console.WriteLine("You feel oddly awful for this.");
             }
+
+            // enemy encounter
+
+            Console.WriteLine("You run into a creepy goblin!");
+            Console.WriteLine("He says,");
+            Console.WriteLine("Solve my riddle... WITH YOUR FISTS!");
+            Console.WriteLine("What will you do?");
+            Console.WriteLine("1. Fight");
+            Console.WriteLine("2. Do nothing");
+            Console.Write(">");
+            playerChoice = Console.ReadLine();
+
+            if (playerChoice == "1")
+            {
+                Console.WriteLine("You punch the goblin.");
+                Console.WriteLine("He's rather weak. He falls down and dies!");
+            }
+
+            else if (playerChoice == "2")
+            {
+                Console.WriteLine("You do nothing.");
+                Console.WriteLine("You lost 1 HP from an attack!");
+                hp -= 1;
+            }
+
+
+            // HP danger and death
+            if (hp <= 0)
+            {
+                Console.WriteLine("You died!");
+            }
+
+            else if (hp <= 5)
+            {
+                Console.WriteLine("DANGER!");
+            }
+            else
+
+            {
+                Console.WriteLine("Invalid input.");
+            }
+
+            // battle
+            bool enemyAlive = true;
+
+            if (playerIsAlive && enemyAlive)
+            {
+                // perform battle logic
+            }
+            else
+            {
+                // display battle results
+            }
+
+            bool enemyWonBattle = true;
+            bool playerWonBattle = true;
         }
     }
 }
