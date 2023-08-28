@@ -10,26 +10,55 @@ namespace HelloDungeon
     {
         public void Run()
         {
-            // Initializes player stats
-            string playerName = "Jim";
-            string playerChoice;
+            // Initializes player stats and more
+            string playerName = "";
+            string playerChoice = "";
             float testFloat = 3.2f;
             float hp = 10f;
             float atk = 10f;
+            float scaledDamage = 7;
             float mp = 5f;
+            float goblinHP = 10;
             int areaNumber = 0;
             bool playerIsAlive = hp > 0;
-            // print out name for player
+            // print out name for creator of game
             Console.WriteLine("Weston");
             Console.WriteLine("Sewell");
-            // get input from palyer for first and last name
-            Console.Write(">");
-            string firstName = Console.ReadLine();
-            Console.Write(">");
-            string lastName = Console.ReadLine();
 
-            playerName = firstName + lastName;
-            // display character name for mplayer feedback
+
+                //naming the player
+                Console.Write("What is your name?");
+
+                Console.Write(">");
+                playerName = Console.ReadLine();
+
+                Console.Write("Are you sure? Say Yes or No.");
+
+                Console.Write(">");
+
+                playerChoice = Console.ReadLine();
+            // if choice is no
+            if (playerChoice == "no")
+            {
+                Console.WriteLine("Alright. What is your name?");
+                Console.Write(">");
+                playerName = Console.ReadLine();
+                Console.Write("Are you sure? Say Yes or No.");
+                Console.Write(">");
+            }
+
+            else if (playerChoice == "yes")
+            {
+                Console.WriteLine("What a nice name...");
+            }
+
+            else
+            {
+                Console.WriteLine("Input invalid.");
+            }
+
+
+            // display character name for player feedback
             Console.WriteLine("Hello " + playerName + " to me games");
             // dialogue 1
             Console.WriteLine("You run into a strange man.");
@@ -45,7 +74,7 @@ namespace HelloDungeon
             if (playerChoice == "1" || playerChoice == "yes")
             {
                 Console.WriteLine("Tastes like an apple.");
-                Console.WriteLine("Your skin hardens and you gain 5 HP.");
+                Console.WriteLine("Your skin hardens as you gain 5 HP.");
                 hp += 5;
             }
 
@@ -69,7 +98,7 @@ namespace HelloDungeon
             if (playerChoice == "1")
             {
                 Console.WriteLine("You punch the goblin.");
-                Console.WriteLine("He's rather weak. He falls down and dies!");
+                Console.WriteLine("He's rather weak. He loses 3 HP.");
             }
 
             else if (playerChoice == "2")
@@ -79,6 +108,14 @@ namespace HelloDungeon
                 hp -= 1;
             }
 
+            // lowers enemy goblin hp
+            while (playerChoice == "1")
+                goblinHP -= 3;
+
+            // end battle with goblin
+            while (goblinHP == 10)
+                Console.WriteLine("The goblin falls down and dies.");
+            Console.WriteLine("YOU WON!");
 
             // HP danger and death
             if (hp <= 0)
