@@ -3,13 +3,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace HelloDungeon
 {
     class Game
     {
+        float Add(float a, float b)
+        {
+            float result = a + b;
+            return result;
+        }
+        
+        
+        // shows stats
+        void PrintStats(string playerName, float hp, float atk)
+        {
+            Console.WriteLine("Name: " + playerName);
+            Console.WriteLine("HP: " + hp);
+            Console.WriteLine("ATK: " + atk);
+        }
+        // player choices
+        string DisplayMenu(string prompt, string option1, string option2)
+        {
+            string playerChoice = "";
+            while (playerChoice != "1" && playerChoice != "2")
+            {
+                Console.Clear();
+
+                Console.WriteLine(prompt);
+                if (option2 != "")
+                {
+                    Console.WriteLine("1." + option1);
+                }
+
+                else if (option1 != "")
+                {
+                    Console.WriteLine("2." + option2);
+                }
+
+                Console.Write("> ");
+                playerChoice = Console.ReadLine();
+
+                if (playerChoice != "1" && playerChoice != "2");
+                {
+                    Console.Clear();
+                    Console.WriteLine("Invalid Input");
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ReadKey(true);
+
+                }
+            }
+            return playerChoice;
+        }
+
         public void Run()
         {
+            
             // Initializes player stats and more
             string playerName = "";
             string playerChoice = "";
@@ -56,7 +106,7 @@ namespace HelloDungeon
             {
                 Console.WriteLine("Input invalid.");
             }
-
+            PrintStats(playerName, hp, atk);
 
             // display character name for player feedback
             Console.WriteLine("Hello " + playerName + " to me games");
